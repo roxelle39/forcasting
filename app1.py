@@ -5,21 +5,14 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 import plotly.graph_objs as go
 import datetime
+import os
 
 # ============================
 # Chargement des données
 # ============================
 @st.cache_data
-def load_data():
-    dakar = pd.read_csv("/home/rokhayadiop/Téléchargements/stage/final_app/data/dakar_new.csv", parse_dates=["Datetime", "Date"])
-    region = pd.read_csv("/home/rokhayadiop/Téléchargements/stage/final_app/data/region_new.csv", parse_dates=["Datetime", "Date"])
-    return dakar, region
 
-dakar, region = load_data()
 
-# ============================
-# Fonctions utilitaires
-# ============================
 def assigner_saison(mois):
     if mois in [1, 2, 3, 12]:
         return "Bas"
