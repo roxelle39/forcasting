@@ -72,7 +72,7 @@ def ajuster_consommation(y_pred, df_test):
     y_adj = y_pred.copy()
 
     # Facteur température
-    temp_factor = 1.0 + 0.09 * (df_test["temperature"] - df_test["temperature"].mean())
+    temp_factor = 1.0 + 0.085 * (df_test["temperature"] - df_test["temperature"].mean())
     # Facteur humidité
     humid_factor = 1.0 - 0.001 * (df_test["humidity"] - df_test["humidity"].mean())
     # Facteur jours fériés
