@@ -138,16 +138,16 @@ def ajuster_consommation(y_pred, df_test):
             elif 4 <= h <= 6:
                 y_adj[i] *= 1.05
             elif 7 <= h <= 9:        # forte pointe matin
-                y_adj[i] *= 0.98
+                y_adj[i] *= 0.99
             elif 10 <= h <= 12:      # chaleur + clim
 
                 y_adj[i] *= 0.8
 
             elif h == 13:
                 y_adj[i] *= 0.8
-            elif 14 <= h <= 15:
+            elif 14 <= h <= 17:
                 y_adj[i] *= 0.8      
-            elif 16 <= h <= 21:      # TRÈS forte pointe soir
+            elif 18 <= h <= 21:      # TRÈS forte pointe soir
                 y_adj[i] *= 0.9
                 
             elif h >= 22:
