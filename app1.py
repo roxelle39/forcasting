@@ -74,7 +74,7 @@ def ajuster_consommation(y_pred, df_test):
     # Facteur température
     temp_factor = 1.0 + 0.085 * (df_test["temperature"] - df_test["temperature"].mean())
     # Facteur humidité
-    humid_factor = 1.0 - 0.001 * (df_test["humidity"] - df_test["humidity"].mean())
+    humid_factor = 1.0 - 0.01 * (df_test["humidity"] - df_test["humidity"].mean())
     # Facteur jours fériés
     ferie_factor = df_test["Date_only"].apply(facteur_ferie)
 
@@ -134,19 +134,19 @@ def ajuster_consommation(y_pred, df_test):
         # -------- Saison HAUTE --------
         elif saison == "Haute":
             if 0 <= h <= 3:
-                y_adj[i] *= 0.94
+                y_adj[i] *= 0.97
             elif 4 <= h <= 6:
-                y_adj[i] *= 1.05
+                y_adj[i] *= 1.1
             elif 7 <= h <= 10:        # forte pointe matin
-                y_adj[i] *= 0.99
+                y_adj[i] *= 0.9
             elif 11 <= h <= 12:      # chaleur + clim
 
-                y_adj[i] *= 0.83
+                y_adj[i] *= 0.81
 
-            elif 13 <= h <= 14:
+            elif 13 <= h <= 16:
                 y_adj[i] *= 0.75
-            elif 15 <= h <= 18:
-                y_adj[i] *= 0.75      
+            elif 17 <= h <= 18:
+                y_adj[i] *= 0.8      
             elif 19 <= h <= 20:      # TRÈS forte pointe soir
                 y_adj[i] *= 0.9
                 
