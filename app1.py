@@ -87,7 +87,7 @@ def ajuster_consommation(y_pred, df_test):
     elif saison == "Transition":
         y_adj *= 0.85
     elif saison == "Haute":
-        y_adj *= 1.2
+        y_adj *= 0.99
 
        # ============================
     # Ajustement heures de pointe par saison
