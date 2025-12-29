@@ -107,8 +107,8 @@ def pred_base(df_base, colonne_cons, date_choisie, temp_hour, humid_hour, ref_ye
     df_jour["day_of_week"] = df_jour["Date"].dt.weekday
     df_jour["is_weekend"] = (df_jour["day_of_week"] >= 5).astype(int)
 
-    # Colonnes événementielles
-    for col in ["humidity", "is_ramadan", "is_tabaski", "is_korite", "is_gamou", "is_magal"]:
+    # Colonnes événementielles pour df_jour
+    for col in ["humidity","is_ramadan","is_tabaski","is_korite","is_gamou","is_magal"]:
         if col not in df_jour.columns:
             df_jour[col] = 0.0 if col=="humidity" else 0
 
@@ -119,11 +119,12 @@ def pred_base(df_base, colonne_cons, date_choisie, temp_hour, humid_hour, ref_ye
     y = df_jour[colonne_cons]
     X = df_jour[features]
 
+    # Entraînement du modèle
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
     model = RandomForestRegressor(n_estimators=200, random_state=42)
     model.fit(X_train, y_train)
 
-    # Création df_test
+    # Construction de df_test pour 24 heures
     df_test = pd.DataFrame({
         "hour": np.arange(24),
         "temperature": temp_hour,
@@ -139,19 +140,30 @@ def pred_base(df_base, colonne_cons, date_choisie, temp_hour, humid_hour, ref_ye
     df_test["weekofyear"] = date_dt.isocalendar().week
     df_test["trend"] = (date_dt - df_jour["Date"].min()).days
 
-    # Prédiction
+    # Colonnes événementielles pour df_test (important pour éviter KeyError)
+    for col in ["is_ramadan","is_tabaski","is_korite","is_gamou","is_magal"]:
+        df_test[col] = 0
+
+    # Prédiction avec correction annuelle
     y_pred = model.predict(df_test[features])
     df_test["annee_factor"] = 1 + taux_croissance_annuelle * ((df_test["year"] - ref_year) + df_test["month"]/12)
     y_pred = y_pred * df_test["annee_factor"]
+
+    # Ajustement consommation (température, humidité, saison, heures, événements)
     y_pred = ajuster_consommation(y_pred, df_test)
 
-    # Graphique
+    # Graphique Plotly
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df_test["hour"], y=y_pred, mode="lines+markers", name="Consommation prédite"))
-    fig.update_layout(title=f"Prévision {colonne_cons} - {date_choisie}", xaxis=dict(title="Heure"),
-                      yaxis=dict(title="Consommation (MW)"), template="plotly_white")
+    fig.update_layout(
+        title=f"Prévision {colonne_cons} - {date_choisie}",
+        xaxis=dict(title="Heure"),
+        yaxis=dict(title="Consommation (MW)"),
+        template="plotly_white"
+    )
 
     return y_pred, fig
+
 
 
 # ============================
