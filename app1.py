@@ -14,8 +14,8 @@ import os
 def load_data():
     # chemin relatif
     base_path = os.path.join(os.path.dirname(__file__), "data")
-    dakar = pd.read_csv(os.path.join(base_path, "dakar_new.csv1"), parse_dates=["Datetime", "Date"])
-    region = pd.read_csv(os.path.join(base_path, "region_new.csv1"), parse_dates=["Datetime", "Date"])
+    dakar = pd.read_csv(os.path.join(base_path, "dakar_new.csv"), parse_dates=["Datetime", "Date"])
+    region = pd.read_csv(os.path.join(base_path, "region_new.csv"), parse_dates=["Datetime", "Date"])
     return dakar, region
 dakar, region = load_data()
 def assigner_saison(mois):
