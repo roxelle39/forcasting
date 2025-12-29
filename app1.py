@@ -77,7 +77,7 @@ def ajuster_consommation(y_pred, df_test):
     y_adj *= temp_factor * humid_factor * ferie_factor * ramadan_factor
 
           # Facteur saison + heures combinés
-        saison = assigner_saison(mois)
+    saison = assigner_saison(mois)
         horaires_coeff = {
             "Bas": [1.0,1.0,0.95,0.95,0.9,0.9,0.85,0.85,0.8,0.8,0.75,0.75,0.75,0.75,0.75,0.8,0.85,0.85,0.9,0.95,0.95,0.95,0.95,0.95],
             "Transition": [1.2]*24,
