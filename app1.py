@@ -8,7 +8,7 @@ import datetime
 import os
 
 # ============================
-# Chargement des données
+# Chargement des données 
 # ============================
 @st.cache_data(ttl=600)
 def load_data(): 
