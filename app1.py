@@ -59,7 +59,7 @@ def facteur_ramadan(date):
         return 1.05 
     return 1.0 
 
-def facteur_ferie(date):
+def facteur_ferie(date): 
     if pd.to_datetime(date) in jours_feries:
         return 1.05
     return 1.0
