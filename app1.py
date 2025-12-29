@@ -78,16 +78,16 @@ def ajuster_consommation(y_pred, df_test):
 
           # Facteur saison + heures combinés
     saison = assigner_saison(mois)
-        horaires_coeff = {
+    horaires_coeff = {
             "Bas": [1.0,1.0,0.95,0.95,0.9,0.9,0.85,0.85,0.8,0.8,0.75,0.75,0.75,0.75,0.75,0.8,0.85,0.85,0.9,0.95,0.95,0.95,0.95,0.95],
             "Transition": [1.2]*24,
             "Haute": [0.95,0.95,0.95,0.95,0.95,0.95,0.9,0.85,0.85,0.8,0.8,0.8,0.7,0.7,0.7,0.7,0.75,0.8,0.85,0.9,0.9,0.9,0.95,0.95]
         }
-        coeff = horaires_coeff.get(saison, [1.0]*24)
-        for i, h in enumerate(heures):
-            y_adj[i] *= coeff[h]
+    coeff = horaires_coeff.get(saison, [1.0]*24)
+    for i, h in enumerate(heures):
+        y_adj[i] *= coeff[h]
 
-
+    return y_adj
 # ============================
 # Prédiction de consommation
 # ============================
