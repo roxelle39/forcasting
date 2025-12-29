@@ -11,7 +11,7 @@ import os
 # Chargement des données
 # ============================
 @st.cache_data
-def load_data():
+def load_data(): 
     # chemin relatif
     base_path = os.path.join(os.path.dirname(__file__), "data")
     dakar = pd.read_csv(os.path.join(base_path, "dakar_new.csv"), parse_dates=["Datetime", "Date"])
