@@ -17,7 +17,7 @@ def load_data():
     region = pd.read_csv(os.path.join(base_path, "region_new.csv"), parse_dates=["Datetime", "Date"])
     return dakar, region
 
-dakar, region = load_data()
+dakar, region = load_data() 
 
 # ============================
 # Fonctions utilitaires
