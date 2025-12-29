@@ -34,7 +34,7 @@ def extract_hour(col):
         return pd.to_datetime(col, format="%H:%M:%S").dt.hour
     elif np.issubdtype(col.dtype, np.integer):
         return col
-    else:
+    else: 
         return col.apply(lambda x: x.hour)
 
 # ============================
