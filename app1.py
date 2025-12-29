@@ -133,24 +133,28 @@ def ajuster_consommation(y_pred, df_test):
             elif h >= 22:
                 y_adj[i] *= 1.03
         # -------- Saison HAUTE --------
+        
         elif saison == "Haute":
-            if 0 <= h <= 5:
+            if  h == 0:
+                y_adj[i] *= 1.43
+            elif 1 <= h <= 5:
                 y_adj[i] *= 0.97
             elif 6 <= h <= 8:
                 y_adj[i] *= 1.27
             
-            elif 9 <= h <= 12:      # chaleur + clim
+            elif 9 <= h <= 13:      # chaleur + clim
 
                 y_adj[i] *= 0.75
+            
 
-            elif 13 <= h <= 17:
-                y_adj[i] *= 0.68
+            elif 14 <= h <= 17:
+                y_adj[i] *= 0.6
                   
             elif 18<= h <= 21:      # TRÈS forte pointe soir
-                y_adj[i] *= 0.89
+                y_adj[i] *= 0.92
                 
             elif h >= 22:
-                y_adj[i] *= 0.8
+                y_adj[i] *= 0.96
 
 
     return y_adj
