@@ -92,9 +92,11 @@ def ajuster_consommation(y_pred, df_test):
        # ============================
     # Ajustement heures de pointe par saison
     # ============================
+    
     for i, h in enumerate(heures):
 
         # -------- Saison BASSE --------
+        
         if saison == "Bas":
             if 0 <= h <= 8:          
                 y_adj[i] *= 1.7 
