@@ -83,7 +83,7 @@ def ajuster_consommation(y_pred, df_test):
     # Ajustements saisonniers
     saison = assigner_saison(mois)
     if saison == "Bas":
-        y_adj *= 0.62
+        y_adj *= 0.61
     elif saison == "Transition":
         y_adj *= 0.85
     elif saison == "Haute":
