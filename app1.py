@@ -103,7 +103,7 @@ def ajuster_consommation(y_pred, df_test):
             elif 10 <= h <= 13:      # journée calme
                 y_adj[i] *= 0.69 
             elif 14 <= h <= 16:      # pointe soir modérée
-                y_adj[i] *= 0.7  
+                y_adj[i] *= 0.7   
             elif 17 <= h <= 19:      # journée calme
                 y_adj[i] *= 0.85  
             elif 20 <= h <= 22:      # pointe soir modérée
