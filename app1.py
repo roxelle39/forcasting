@@ -111,6 +111,7 @@ def ajuster_consommation(y_pred, df_test):
             elif 19 <= h <= 22:      # pointe soir modérée
                 y_adj[i] *= 1.3
             elif h ==23 :
+                
                 y_adj[i] *= 0.99   
 
         # -------- Saison TRANSITION --------
