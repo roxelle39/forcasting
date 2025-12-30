@@ -72,7 +72,7 @@ def ajuster_consommation(y_pred, df_test):
     y_adj = y_pred.copy()
 
     # Facteur température
-    temp_factor = 1.0 + 0.085 * (df_test["temperature"] + df_test["temperature"].mean())
+    temp_factor = 1.0 + 0.085 * (df_test["temperature"] - df_test["temperature"].mean())
     # Facteur humidité
     humid_factor = 1.0 - 0.01 * (df_test["humidity"] - df_test["humidity"].mean())
     # Facteur jours fériés
@@ -97,7 +97,7 @@ def ajuster_consommation(y_pred, df_test):
         # -------- Saison BASSE --------
         if saison == "Bas":
             if 0 <= h <= 4:          # nuit
-                y_adj[i] *= 1.1
+                y_adj[i] *= 1.2
             elif 5 <= h <= 9:        # réveil
                 y_adj[i] *= 0.98
            
