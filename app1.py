@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 import plotly.graph_objs as go
 import datetime
 import os
-
 # ============================
 # Chargement des données
 # ============================
