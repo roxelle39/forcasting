@@ -96,7 +96,6 @@ def ajuster_consommation(y_pred, df_test):
     for i, h in enumerate(heures):
 
         # -------- Saison BASSE --------
-        
         if saison == "Bas":
             if 0 <= h <= 8:          
                 y_adj[i] *= 1.4 
@@ -114,7 +113,6 @@ def ajuster_consommation(y_pred, df_test):
                 y_adj[i] *= 1.03       
             elif h ==23 :
                 y_adj[i] *= 0.99   
-
         # -------- Saison TRANSITION --------
         elif saison == "Transition":
             if  h == 0:
