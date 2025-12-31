@@ -62,6 +62,7 @@ def facteur_ferie(date):
     if pd.to_datetime(date) in jours_feries:
         return 1.05
     return 1.0
+    
 # ============================
 # Ajustement de consommation
 # ============================
@@ -88,6 +89,7 @@ def ajuster_consommation(y_pred, df_test):
     elif saison == "Haute":
         y_adj *= 0.95
 
+    
        # ============================
     # Ajustement heures de pointe par saison
     # ============================
