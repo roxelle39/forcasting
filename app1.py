@@ -151,8 +151,6 @@ def ajuster_consommation(y_pred, df_test):
                 y_adj[i] *= 0.85
             elif h == 23:
                 y_adj[i] *= 0.8
-
-
     return y_adj
 
 
