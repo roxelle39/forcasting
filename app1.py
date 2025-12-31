@@ -98,8 +98,13 @@ def ajuster_consommation(y_pred, df_test):
 
         # -------- Saison BASSE --------
         if saison == "Bas":
-            if 0 <= h <= 8:          
+            
+            if 0 <= h <= 1:          
                 y_adj[i] *= 1.38
+            elif 2 <= h <= 6: # journée calme
+                 y_adj[i] *= 1.29
+            elif 7 <= h <= 8: # journée calme
+                  y_adj[i] *= 1.2      
             elif h ==  9:
                 y_adj[i] *= 1  
             elif h ==  10:  
