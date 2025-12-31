@@ -70,6 +70,7 @@ def ajuster_consommation(y_pred, df_test):
     mois = df_test["month"].iloc[0]
     heures = df_test["hour"]
     y_adj = y_pred.copy()
+    
 
     # Facteur température
     temp_factor = 1.0 + 0.085 * (df_test["temperature"] - df_test["temperature"].mean())
