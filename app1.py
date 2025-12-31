@@ -34,7 +34,7 @@ def extract_hour(col):
     elif np.issubdtype(col.dtype, np.integer):
         return col
     else: 
-        return col.apply(lambda x: x.hour)
+        return col.apply(lambda x: x.hour)  
 
 # ============================
 # Jours fériés et Ramadan
