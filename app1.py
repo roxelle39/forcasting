@@ -113,6 +113,7 @@ def ajuster_consommation(y_pred, df_test):
                 y_adj[i] *= 1.04       
             elif h ==23 :
                 y_adj[i] *= 1.02   
+                
         # -------- Saison TRANSITION --------
         elif saison == "Transition":
             if  h == 0:
